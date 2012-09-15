@@ -1,0 +1,56 @@
+body {
+  font-family: 'Cabin Sketch', sans-serif;
+  background-color: #4EA0F8;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+h1 {
+  font-size: 4em;
+  color: #D3E6FF;
+}
+
+img#sitting-jake {
+  position: absolute;
+}
+
+div#password-div {
+  background-color: #8BBCD0;
+  height: 100px;
+  width: 250px;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+  display: none;
+}
+
+input#password-button {
+  font-family: 'Cabin Sketch', sans-serif;
+  font-size: 1.5em;
+}
+
+input#password-text {
+  font-family: 'Cabin Sketch', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  margin: 5px;
+  width: 5em;
+  border-radius: 10px;
+}
+
+div#intro {
+  width: 555px;
+  text-align: center;
+  margin: 10px auto;
+}
+
+span.menu-option {
+  position: absolute;
+  color: #D3E6FF;
+  font-size: 2em;
+}
