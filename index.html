@@ -6,23 +6,42 @@
     <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' type='text/css' href='style.css' />
     <script src='jquery-1.8.1.js'></script>
+    <script src='menu.js'></script>
     <script src='game.js'></script>
   </head>
   <body>
-    <div id='intro'>
+    <img id='sitting-jake' src='jake_meditate.svg' />
+    <div id='menu'>
       <h1>Clear Your Mind</h1>
-      <img id='sitting-jake' src='jake_meditate.svg' />
       <span id='menu-password' class='menu-option'>Password</span>
       <span id='menu-newgame' class='menu-option'>New Game</span>
       <span id='menu-info' class='menu-option'>Information</span>
     </div>
     <div id='info'>
-      <p>Some information!</p>
+      <p>Help Jake the dog reach an enlightenment. Cast the illusions to the abyss.</p>
+      <table>
+          <tr>
+          <td><img src='worm_stand_r.gif' /></td>
+          <td>The Worms</td>
+          </tr>
+          <tr>
+          <td><img src='snail_thumb.png' /></td>
+          <td>The Snails</td>
+          </tr>
+      </table>
+      <input id='close-info' type='button' value="Done" />
     </div>
     <div id='password-div'>
       Enter level password below
       <input id='password-text' type='text' /><br/>
       <input id='password-button' type='button' value="Go!" />
+      <input id='password-nope' type='button' value="Nope" />
+    </div>
+    <div id='preload'>
+      <audio id='worm-loop' loop='loop'>
+        <source src='worm_crawl.mp3' type='audio/mp3' />
+        <source src='worm_crawl.ogg' type='audio/ogg' />
+      </audio>
     </div>
   </body>
 </html>

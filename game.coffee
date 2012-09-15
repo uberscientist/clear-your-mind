@@ -1,52 +1,42 @@
-jQuery.ready = () ->
-  menuAnimation()
+i = 0
+wormNum = 4
 
-$(window).resize( () ->
-)
+wormEmitter = (x, y) ->
+  w = self.setInterval ->
+    i++
+    wormNum--
+    if wormNum <= 0
+      clearInterval(w)
 
-menuAnimation = () ->
+    console.log wormNum
+    createWorm(x,y,i)
+  , 3000
 
-  height = $(window).height()
-  width = $(window).width()
+createWorm = (x,y,i) ->
+  windowH = $(window).height()
+  windowW = $(window).width()
 
-  jake = $('#sitting-jake')
-  jake.css(
-    'top' : height
-    'left': (width/2) - 180)
+  dir = if x > windowW/2 then 'l' else 'r'
+  if x > windowW/2
+    x += 100
+  else
+    x -= 100
+  sprite = "worm_crawl_#{dir}.gif"
 
-  $('span.menu-option').css(
-    'left': (width/2) - 120,
-    'top' : height + 50)
-  
-  jake.animate(
-    'top': (height/2) - 100
-  1000, () ->
-    jakePos = jake.position()
+  setTimeout ->
+    $("body").prepend("<img id='#{i}' class='worm' src='#{sprite}' />")
+    worm = $("##{i}")
+    worm.css('left' : x,
+             'top'  : y)
+    worm.animate(
+      'left' : windowW/2,
+      'top'  : windowH/2
+    Math.random() * 6000 + 8000)
+  , Math.random() * 500 + 2000
 
-    $('span#menu-newgame').animate(
-      'left': jakePos.left - 80,
-      'top' : jakePos.top + 30,
-    500)
-    $('span#menu-password').animate(
-      'left': jakePos.left + 320,
-      'top' : jakePos.top + 30,
-    500)
-    $('span#menu-info').animate(
-      'left': jakePos.left + 100,
-      'top' : jakePos.top - 20,
-    800, () ->
-      setupMenu()))
-
-setupMenu = () ->
-  $('span.menu-option').hover(() ->
-    $(this).css('cursor': 'pointer'))
-
-  $('span#menu-newgame').click(() ->
-
-  )
-  $('span#menu-password').click(() ->
-    $('div#password-div').slideDown(500)
-  )
-  $('span#menu-info').click(() ->
-
-  )
+window.startGame = () ->
+  windowH = $(window).height()
+  windowW = $(window).width()
+  wormEmitter(windowW,0)
+  wormEmitter(0,0)
+  $('audio#worm-loop').trigger('play')

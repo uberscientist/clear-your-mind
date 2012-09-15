@@ -7,6 +7,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  overflow: hidden;
 }
 
 h1 {
@@ -15,7 +16,26 @@ h1 {
 }
 
 img#sitting-jake {
+  width: 450px;
+  height: 280px;
   position: absolute;
+  z-index: -2;
+}
+
+img.worm {
+  position: absolute;
+  width: 97px;
+  height: 77px;
+}
+
+div#info {
+  background-color: #8BBCD0;
+  width: 300px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 20px;
+  display: none;
 }
 
 div#password-div {
@@ -29,7 +49,7 @@ div#password-div {
   display: none;
 }
 
-input#password-button {
+input[type='button'] {
   font-family: 'Cabin Sketch', sans-serif;
   font-size: 1.5em;
 }
@@ -43,7 +63,7 @@ input#password-text {
   border-radius: 10px;
 }
 
-div#intro {
+div#menu {
   width: 555px;
   text-align: center;
   margin: 10px auto;
@@ -53,4 +73,9 @@ span.menu-option {
   position: absolute;
   color: #D3E6FF;
   font-size: 2em;
+  z-index: -1;
+}
+
+div#preload {
+  display: hidden;
 }
