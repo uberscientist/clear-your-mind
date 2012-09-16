@@ -5,16 +5,25 @@
     <title>Clear your Mind</title>
     <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' type='text/css' href='style.css' />
-    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript">
+    <script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.8.1.min.js"></script>
+    <script>
       if (typeof jQuery == 'undefined') {
-        document.write(unescape("%3Cscript src='jquery-1.8.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='jquery-1.8.1.min.js'%3E%3C/script%3E"));
       }
     </script>
+    <script src='kinetic-v4.0.1.min.js'></script>
     <script src='menu.js'></script>
     <script src='worm.js'></script>
+    <script src='pits.js'></script>
   </head>
+
   <body>
+    <div id='message'>
+      <!-- use this to tell peeps whats up -->
+    </div>
+
+    <div id='pits'></div>
+
     <img id='sitting-jake' src='imgs/jake_meditate.svg' />
     <div id='menu'>
       <h2 id='loading'>Loading...</h2>
@@ -23,10 +32,11 @@
       <span id='menu-info' class='menu-option'>Information</span>
     </div>
     <div id='info'>
-      <p>Help Jake the dog reach an enlightenment. Cast the illusions to the abyss.</p>
+      <h2>Clear Your Mind</h2>
+      <p>Help Jake the dog reach enlightenment. Cast the illusions to the abyss:</p>
       <table>
           <tr>
-          <td><img src='imgs/worm_stand_r.gif' /></td>
+          <td><img src='imgs/worm_crawl_r.gif' /></td>
           <td>The Worms</td>
           </tr>
           <tr>
@@ -34,6 +44,8 @@
           <td>The Snails</td>
           </tr>
       </table>
+      <p>One man team, 48 hours. Chris Toledo is a pretty cool dude.
+      <a href='http://mindsforge.com'>Mindsforge</a></p>
       <input id='close-info' type='button' value="Done" />
     </div>
     <div id='password-div'>
@@ -42,49 +54,55 @@
       <input id='password-button' type='button' value="Go!" />
       <input id='password-nope' type='button' value="Nope" />
     </div>
-    <div id='message'>
-      <!-- use this to tell peeps whats up -->
-    </div>
+
     <div id='preload'>
       <audio id='menu-loop' loop='loop' autoplay='autoplay'>
-        <source src='audio/menu.mp3' type='audio/mp3' />
         <source src='audio/menu.ogg' type='audio/ogg' />
+        <source src='audio/menu.mp3' type='audio/mp3' />
       </audio>
-      <audio id='wormlevel-music' loop='loop'>
-        <source src='audio/worm_level.mp3' type='audio/mp3' />
+      <audio id='wormlevel-music' loop='loop' preload='auto'>
         <source src='audio/worm_level.ogg' type='audio/ogg' />
+        <source src='audio/worm_level.mp3' type='audio/mp3' />
       </audio>
-      <audio id='worm-loop' loop='loop'>
-        <source src='audio/worm_crawl.mp3' type='audio/mp3' />
+      <audio id='pits-loop' loop='loop' preload='auto'>
+        <source src='audio/hap.ogg' type='audio/ogg' />
+        <source src='audio/hap.mp3' type='audio/mp3' />
+      </audio>
+      <audio id='worm-loop' loop='loop' preload='auto'>
         <source src='audio/worm_crawl.ogg' type='audio/ogg' />
+        <source src='audio/worm_crawl.mp3' type='audio/mp3' />
       </audio>
-      <audio id='worm-wowow'>
-        <source src='audio/wowow.mp3' type='audio/mp3' />
+      <audio id='worm-wowow' preload='auto'>
         <source src='audio/wowow.ogg' type='audio/ogg' />
+        <source src='audio/wowow.mp3' type='audio/mp3' />
       </audio>
-      <audio id='zap'>
-        <source src='audio/zap.mp3' type='audio/mp3' />
+      <audio id='zap' preload='auto'>
         <source src='audio/zap.ogg' type='audio/ogg' />
+        <source src='audio/zap.mp3' type='audio/mp3' />
       </audio>
-      <audio id='kw-taunt-1'>
-        <source src='audio/kw_oh_heyguys.mp3' type='audio/mp3' />
+      <audio id='satori' preload='auto'>
+        <source src='audio/satori.ogg' type='audio/ogg' />
+        <source src='audio/satori.mp3' type='audio/mp3' />
+      </audio>
+      <audio id='kw-taunt-1' preload='auto'>
         <source src='audio/kw_oh_heyguys.ogg' type='audio/ogg' />
+        <source src='audio/kw_oh_heyguys.mp3' type='audio/mp3' />
       </audio>
-      <audio id='kw-taunt-2'>
-        <source src='audio/kw_comeherehugme.mp3' type='audio/mp3' />
+      <audio id='kw-taunt-2' preload='auto'>
         <source src='audio/kw_comeherehugme.ogg' type='audio/ogg' />
+        <source src='audio/kw_comeherehugme.mp3' type='audio/mp3' />
       </audio>
-      <audio id='kw-taunt-3'>
-        <source src='audio/kw_youcantdefeatme.mp3' type='audio/mp3' />
+      <audio id='kw-taunt-3' preload='auto'>
         <source src='audio/kw_youcantdefeatme.ogg' type='audio/ogg' />
+        <source src='audio/kw_youcantdefeatme.mp3' type='audio/mp3' />
       </audio>
-      <audio id='kw-taunt-4'>
-        <source src='audio/kw_dontfeelsogood.mp3' type='audio/mp3' />
+      <audio id='kw-taunt-4' preload='auto'>
         <source src='audio/kw_dontfeelsogood.ogg' type='audio/ogg' />
+        <source src='audio/kw_dontfeelsogood.mp3' type='audio/mp3' />
       </audio>
-      <audio id='kw-taunt-5'>
-        <source src='audio/kw_heyguysknockitoff.mp3' type='audio/mp3' />
+      <audio id='kw-taunt-5' preload='auto'>
         <source src='audio/kw_heyguysknockitoff.ogg' type='audio/ogg' />
+        <source src='audio/kw_heyguysknockitoff.mp3' type='audio/mp3' />
       </audio>
     </div>
   </body>
