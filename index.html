@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <!-- Hello gaddy, you are entering a world of pure imagination -->
   <head>
     <meta charset="utf-8">
     <title>Clear your Mind</title>
@@ -8,16 +9,14 @@
     <script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.8.1.min.js"></script>
     <script>
       if (typeof jQuery == 'undefined') {
-        document.write(unescape("%3Cscript src='jquery-1.8.1.min.js'%3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='js/jquery-1.8.1.min.js'%3E%3C/script%3E"));
       }
     </script>
-    <script src='kinetic-v4.0.1.min.js'></script>
-    <script src='menu.js'></script>
-    <script src='worm.js'></script>
-    <script src='pits.js'></script>
+
   </head>
 
   <body>
+
     <div id='message'>
       <!-- use this to tell peeps whats up -->
     </div>
@@ -25,12 +24,14 @@
     <div id='pits'></div>
 
     <img id='sitting-jake' src='imgs/jake_meditate.svg' />
+
     <div id='menu'>
       <h2 id='loading'>Loading...</h2>
       <span id='menu-password' class='menu-option'>Password</span>
       <span id='menu-newgame' class='menu-option'>New Game</span>
       <span id='menu-info' class='menu-option'>Information</span>
     </div>
+
     <div id='info'>
       <h2>Clear Your Mind</h2>
       <p>Help Jake the dog reach enlightenment. Cast the illusions to the abyss:</p>
@@ -44,10 +45,13 @@
           <td>The Snails</td>
           </tr>
       </table>
-      <p>One man team, 48 hours. Chris Toledo is a pretty cool dude.
-      <a href='http://mindsforge.com'>Mindsforge</a></p>
+      <p>One man team, 48 hours. Chris Toledo of
+        <a href='http://mindsforge.com'>Minds Forge</a> 
+        is a pretty cool dude.
+      </p>
       <input id='close-info' type='button' value="Done" />
     </div>
+
     <div id='password-div'>
       Enter level password below
       <input id='password-text' type='text' /><br/>
@@ -56,9 +60,26 @@
     </div>
 
     <div id='preload'>
+    <!-- preload ALL the images -->
+      <img src='imgs/worm_crawl_l.gif'/>
+      <img src='imgs/worm_crawl_r.gif'/>
+      <img src='imgs/worm_bite_l.gif'/>
+      <img src='imgs/worm_bite_r.gif'/>
+      <img src='imgs/worm_stand_r.gif'/>
+      <img src='imgs/worm_stand_l.gif'/>
+      <img src='imgs/snail_thumb.png'/>
+      <img src='imgs/kingworm.svg'/>
+      <img src='imgs/soap.png'/>
+      <img src='imgs/jakespit.png'/>
+
+    <!-- html5 audio elements for effects/bg music -->
       <audio id='menu-loop' loop='loop' autoplay='autoplay'>
         <source src='audio/menu.ogg' type='audio/ogg' />
         <source src='audio/menu.mp3' type='audio/mp3' />
+      </audio>
+      <audio id='end-loop' loop='loop' preload='auto'>
+        <source src='audio/endloop.ogg' type='audio/ogg' />
+        <source src='audio/endloop.mp3' type='audio/mp3' />
       </audio>
       <audio id='wormlevel-music' loop='loop' preload='auto'>
         <source src='audio/worm_level.ogg' type='audio/ogg' />
@@ -75,6 +96,10 @@
       <audio id='worm-wowow' preload='auto'>
         <source src='audio/wowow.ogg' type='audio/ogg' />
         <source src='audio/wowow.mp3' type='audio/mp3' />
+      </audio>
+      <audio id='pit-wash' loop='loop' preload='auto'>
+        <source src='audio/wash.ogg' type='audio/ogg' />
+        <source src='audio/wash.mp3' type='audio/mp3' />
       </audio>
       <audio id='zap' preload='auto'>
         <source src='audio/zap.ogg' type='audio/ogg' />
@@ -105,5 +130,7 @@
         <source src='audio/kw_heyguysknockitoff.mp3' type='audio/mp3' />
       </audio>
     </div>
+    <script src='js/kinetic-v4.0.1.min.js'></script>
+    <script src='js/app.js'></script>
   </body>
 </html>

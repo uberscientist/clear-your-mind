@@ -50,8 +50,9 @@ createWorm = (x,y,i) ->
     , () ->
       worm.attr('src', "imgs/worm_bite_#{dir}.gif")
       $('audio#worm-wowow').trigger('play')
-      $("body").append("<span id='score-#{i}' class='score'>-10</span>")
-      score -= 10
+      $("body").append("<span id='score-#{i}' class='score'>-20</span>")
+      score -= 20
+      $('#score-display').html(score)
       scoreSpan = $("#score-#{i}")
       scoreSpan.css(
         'color': 'red',
@@ -69,6 +70,7 @@ createWorm = (x,y,i) ->
       worm.css('z-index': -i)
       $("body").append("<span id='score-#{i}' class='score'>+10</span>") unless $("#score-#{i}").length > 0
       score += 10
+      $('#score-display').html(score)
       scoreSpan = $("#score-#{i}")
       scoreSpan.css(
         'top': e.pageY - 50,
@@ -82,6 +84,8 @@ createWorm = (x,y,i) ->
 startRound = () ->
   windowH = $(window).height()
   windowW = $(window).width()
+
+  #Worm Emitters
   wormEmitter(windowW,0, round)
   wormEmitter(0,0, round)
   $('audio#worm-loop').trigger('play')
@@ -89,6 +93,11 @@ startRound = () ->
 
   clearInterval(check)
   check = setInterval ->
+    if score < 0
+      $('#score-display').css('color', 'red')
+    else
+      $('#score-display').css('color', '#35B94D')
+
     if round == 6
       endRound()
       once = false
@@ -106,11 +115,11 @@ startRound = () ->
 endRound = () ->
   if once
     wormBirth = false
-    $('audio#worm-loop').trigger('pause')
-    $('audio#wormlevel-music').trigger('pause')
+    $('audio').trigger('pause')
+    $('#score-display').remove()
     $('audio#menu-loop').trigger('play')
     finalMsg = "Your score of #{score} "
-    finalMsg += if score > 1000 then "is good, the password is `pits`" else "is not so good, try again."
+    finalMsg += if score > 1000 then "is good, the password is `pits`" else "needs improvement to get the password buddy."
     if score < 0 then finalMsg += "  You didn't even try did you?"
     message("Final Score: #{score}", finalMsg, -1)
 
@@ -125,10 +134,12 @@ window.startGame = () ->
   $('audio#menu-loop').trigger('pause')
   $('audio#wormlevel-music').trigger('play')
   startRound()
-  message("Round #{round}", 'Click the wittle wormies to zap them from your consciousness', 7)
+  message("Round #{round}", 'Click on the wittle wormies to zap them from your consciousness', 7)
   $('body').css(
     'background-image': 'url(\'imgs/kingworm.svg\')',
     'background-repeat': 'no-repeat',
     'background-position': 'center',
     'background-attachment': 'fixed'
    )
+
+  $('body').append("<div id='score-display'></div>")

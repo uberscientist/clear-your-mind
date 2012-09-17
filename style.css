@@ -24,6 +24,10 @@ img#sitting-jake {
   z-index: -2;
 }
 
+img.satori-sprite {
+  position: absolute;
+}
+
 img.worm {
   position: absolute;
   width: 97px;
@@ -35,9 +39,18 @@ div#info {
   width: 300px;
   text-align: center;
   border-radius: 20px;
+  border: solid 3px white;
   margin: 20px auto;
   padding: 20px;
   display: none;
+}
+
+div#score-display {
+  width: 400px;
+  margin: 20px auto;
+  text-align: center;
+  color: #35B94D;
+  font-size: 5em;
 }
 
 div#pits {
@@ -66,6 +79,7 @@ div#password-div {
   height: 100px;
   width: 250px;
   border-radius: 20px;
+  border: solid 3px white;
   padding: 20px;
   text-align: center;
   margin: 20px auto;
@@ -92,6 +106,11 @@ div#menu {
   margin: 10px auto;
 }
 
+div#sprites {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 span.menu-option {
   position: absolute;
   color: #D3E6FF;
@@ -108,5 +127,5 @@ span.score {
 }
 
 div#preload {
-  display: hidden;
+  display: none;
 }
